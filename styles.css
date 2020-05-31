@@ -37,11 +37,12 @@ nav{
     height: 60px;
     background:#3A2558;
 }
-nav:after{
+
+ nav:after{
     content: '';
     clear: both;
     display: table;
-}
+} 
 
 
 nav .logo{
@@ -75,7 +76,7 @@ nav .logo{
 
 
 nav ul li{
-     position: relative;
+   
     background:#3A2558; 
     display: inline-block;
      /* margin: 0 5px;  */
@@ -86,7 +87,7 @@ nav ul li a{
     text-decoration: none;
     color: #fff;
     line-height: 60px;
-    font-size: 18px;
+    font-size: 16px;
     transition: 0.5s ease-in;
     padding: 8px 15px;
 }
@@ -133,26 +134,59 @@ nav ul ul ul li{
     position: relative;
     top: -60px;
     left: 180px;
-}
+} 
 
 .mobile-view, nav label .checkbtn, input{
     display: none;
   }
 
 
+ /* label .checkbtn i{
+  transform-origin: left bottom;
+  transition: transform 1s;
+}
+
+#check:checked ~label .checkbtn i{
+  transform: rotate(360deg);
+}   */
+
+
+ #check:checked + label .checkbtn i:before{
+  content: "\f00d";
+}   
+
+
+
 /*
 === media querry ===
 */
 
-@media all and (max-width: 968px) {
-  
+@media all and (max-width: 1037px){
+
+  nav label .checkbtn{
+    display: block;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 40px;
+    line-height:3.5rem;
+    cursor: pointer;
+    font-size: 25px;
+  } 
+
+   [id^=check]:checked + ul {
+  display: block;
+} 
+
   nav .logo{
     padding-left: 60px;
     width: 100%;
   }
 
 
-   nav ul{
+
+ nav ul{
+   transition: .5s ease-in;
     margin-right: 0px;
     width: 100%;
   }
@@ -172,9 +206,9 @@ nav ul ul ul li{
 .mobile-view{
     display: block;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     padding: 0 20px;
-    line-height: 70px;
+    line-height: 3rem;
     cursor: pointer;
 }
 
@@ -182,19 +216,8 @@ nav ul ul ul li{
     color:rgb(44, 248, 248); 
   }
 
-  nav label .checkbtn{
-    display: block;
-    color: white;
-    position: absolute;
-    top: 0;
-    right: 40px;
-    line-height:3.5rem;
-    cursor: pointer;
-    font-size: 25px;
-  } 
 
   nav ul ul{
-    top: 70px;
     border-top: 0px;
     float: none;
     position: static;
@@ -204,35 +227,31 @@ nav ul ul ul li{
   }
 
     nav ul ul a{
-    padding-left: 40px;
+    padding-left: 20px;
+    line-height: 1rem;
+    display: block;
+    background: rgba(255, 255, 255, 0.055);
+    border-radius: 5px;
   } 
-
 
   nav ul ul ul a{
     padding-left: 80px;
+    line-height: 1rem;
   } 
-
 
   nav ul ul ul li{
     position: static;
   }
-
-
-  [id^=check]:checked + ul{
-    display: block;
-  }
-
 
   nav ul ul li{
     border-bottom: 0px;
     background: none;
   }
 
- 
 .smile{
 visibility: hidden;
 }
 
-  
+   
 } 
  
