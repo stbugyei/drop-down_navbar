@@ -8,9 +8,7 @@
   
   body{
     font-family: 'Poppins', sans-serif;
-    background-image: url(./pexels1.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
+
   }
 
   .container {
@@ -71,7 +69,7 @@ nav .logo{
   position: relative;
   float: right;
   margin-right: 60px;
-  transition: all 0.5s;
+  transition: 1s;
 }
 
 
@@ -105,7 +103,7 @@ nav ul ul{
     opacity: 0;
     visibility: hidden;
     top: 90px;
-    transition: .4s ease;
+    transition: 1s;
 }
 
 nav ul ul ul{
@@ -141,20 +139,34 @@ nav ul ul ul li{
   }
 
 
- /* label .checkbtn i{
-  transform-origin: left bottom;
+ label .checkbtn i{
+  transform-origin: center;
   transition: transform 1s;
 }
 
 #check:checked ~label .checkbtn i{
-  transform: rotate(360deg);
-}   */
+  transform: rotateX(180deg);
+}   
 
 
- #check:checked + label .checkbtn i:before{
+ #check:checked ~ label .checkbtn i:before{
+  color: rgba(255, 0, 0, 0.918);
   content: "\f00d";
 }   
 
+
+.fa-chevron-down{
+  color: rgba(255, 0, 0, 0.473);
+}
+
+.cover__page{
+  width: 100%;
+  height: 100vh;
+  background-image: url(./pexels1.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover; 
+
+}
 
 
 /*
@@ -168,49 +180,69 @@ nav ul ul ul li{
     color: white;
     position: absolute;
     top: 0;
-    right: 40px;
+    right: 20px;
     line-height:3.5rem;
     cursor: pointer;
     font-size: 25px;
   } 
 
-   [id^=check]:checked + ul {
-  display: block;
-} 
 
   nav .logo{
-    padding-left: 60px;
+    padding-left: 20px;
     width: 100%;
   }
-
 
 
  nav ul{
-   transition: .5s ease-in;
     margin-right: 0px;
     width: 100%;
-  }
+    left: -100%;
+    transition: 0.5s ease-in;   
+  } 
 
   .mobile-view + a, ul{
-    display: none;
+    position: absolute;
+    visibility: hidden; 
+    opacity: 0;
+    /* -webkit-transition: opacity 600ms, visibility 600ms;
+    transition: opacity 600ms, visibility 600ms; */
+    transition: 0.5s ease-in;  
   }
 
+  @keyframes fade {
+    0% {
+        opacity: 0;
+    }
 
-  nav ul li,nav ul ul li{
+    100% {
+        opacity: 1;
+    }
+} 
+
+  [id^=check]:checked  ~ ul {
+    visibility: visible; 
+    display: block;  
+    opacity: 1;  
+    left: 0;
+    animation: fade 1s; 
+  } 
+
+
+  nav ul li, nav ul ul li{
     display: block;
     width: 100%;
-    padding-left: 40px;
+    /* padding-left: 40px; */
     background: rgba(0, 0, 0, 0.5); 
 }
 
-.mobile-view{
+ .mobile-view{
     display: block;
     color: white;
     font-size: 16px;
     padding: 0 20px;
     line-height: 3rem;
     cursor: pointer;
-}
+} 
 
   .mobile-view:hover{
     color:rgb(44, 248, 248); 
@@ -221,17 +253,17 @@ nav ul ul ul li{
     border-top: 0px;
     float: none;
     position: static;
-    display: none;
-    opacity: 1;
-    visibility: visible;
+    display: none;  
+    opacity: 1; 
+    margin-left: 90px;
   }
 
     nav ul ul a{
     padding-left: 20px;
     line-height: 1rem;
     display: block;
-    background: rgba(255, 255, 255, 0.055);
     border-radius: 5px;
+    /* background: rgba(255, 255, 255, 0.055);  */
   } 
 
   nav ul ul ul a{
@@ -243,14 +275,20 @@ nav ul ul ul li{
     position: static;
   }
 
-  nav ul ul li{
+  nav ul ul li, nav ul ul{
     border-bottom: 0px;
     background: none;
   }
 
-.smile{
-visibility: hidden;
-}
+
+  nav ul li a, .mobile-view {
+  font-size: 18px;
+  }
+
+
+  .smile{
+  visibility: hidden;
+  }
 
    
 } 
