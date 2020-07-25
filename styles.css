@@ -33,7 +33,8 @@ nav{
     text-transform:uppercase;
     width: 100%;
     height: 60px;
-    background:#3A2558;
+    padding-right: 50px; 
+    background: #2f94fb;;
 }
 
  nav:after{
@@ -62,20 +63,22 @@ nav .logo{
 .fa-chevron-down{
     margin-left: 10px;
     font-size: 12px;
+    transition: .4s ease;
 }
+
 
  nav ul{
   list-style: none;
   position: relative;
   float: right;
-  margin-right: 60px;
-  transition: 1s;
+  /* margin-right: 60px; */
+  transition: all .4s ease-in-out;
+  
 }
 
 
 nav ul li{
-   
-    background:#3A2558; 
+    background: #2f94fb;
     display: inline-block;
      /* margin: 0 5px;  */
 }
@@ -86,24 +89,24 @@ nav ul li a{
     color: #fff;
     line-height: 60px;
     font-size: 16px;
-    transition: 0.5s ease-in;
+    transition: .3s ease; 
     padding: 8px 15px;
 }
 
  nav ul li a:hover{
   color:rgb(44, 248, 248); 
-  transition: 0.2s ease-out;
+  transition: .2s ease;
 } 
 
 
-/*sub menu*/
+/*sub menu properties*/
 
 nav ul ul{
     position: absolute;
     opacity: 0;
-    visibility: hidden;
-    top: 90px;
-    transition: 1s;
+    visibility: hidden;  
+    top: 90px; 
+    transition: all .3s ease;
 }
 
 nav ul ul ul{
@@ -115,6 +118,12 @@ nav ul li:hover > ul{
     opacity: 1;
     visibility: visible;
 }
+
+nav ul li:hover .fa-chevron-down{
+  transform: rotate(180deg);
+}
+
+
 
 
 nav ul ul li{
@@ -134,30 +143,15 @@ nav ul ul ul li{
     left: 180px;
 } 
 
-.mobile-view, nav label .checkbtn, input{
+.mobile-view,
+ nav label .checkbtn, input{
     display: none;
   }
 
 
- label .checkbtn i{
-  transform-origin: center;
-  transition: transform 1s;
-}
-
-#check:checked ~label .checkbtn i{
-  transform: rotateX(180deg);
-}   
-
-
- #check:checked ~ label .checkbtn i:before{
-  color: rgba(255, 0, 0, 0.918);
-  content: "\f00d";
-}   
-
-
-.fa-chevron-down{
+ .fa-chevron-down{
   color: rgba(255, 0, 0, 0.473);
-}
+} 
 
 .cover__page{
   width: 100%;
@@ -165,7 +159,6 @@ nav ul ul ul li{
   background-image: url(./pexels1.jpeg);
   background-repeat: no-repeat;
   background-size: cover; 
-
 }
 
 
@@ -175,16 +168,97 @@ nav ul ul ul li{
 
 @media all and (max-width: 1037px){
 
+  /*=============== humburger properties ===============*/
+
   nav label .checkbtn{
-    display: block;
-    color: white;
     position: absolute;
-    top: 0;
+    top: 15px;
     right: 20px;
-    line-height:3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    min-height: 30px;
     cursor: pointer;
-    font-size: 25px;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    background: transparent;
   } 
+
+  .hamburger {
+    position: absolute;
+    width: 30px;
+    height: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    background: transparent;
+}
+
+
+.hamburger span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    display: block;
+    transition: all .3s ease-in-out;
+    background: transparent; 
+}
+
+.hamburger span:nth-child(1),
+.hamburger span:nth-child(2),
+.hamburger span:nth-child(3) {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    display: block;
+    border-radius: 1px;
+    background: #fff;
+}
+
+
+.hamburger span:nth-child(1) {
+    top: 0;
+    transform-origin: 0px;
+}
+
+
+.hamburger span:nth-child(2) {
+    top: 8px;
+    -webkit-transition: .5s width;
+    transition: .3s width;
+}
+
+
+.hamburger span:nth-child(3) {
+    top: 16px;
+    transform-origin: 0px;
+}
+
+/* humburger animations for swapping the spans */
+
+#btn-menu{
+    display: none;
+}
+
+#btn-menu:checked ~ label .hamburger span:nth-child(1) {
+    transform: rotate(33deg);
+    left: 3px;
+}
+
+#btn-menu:checked ~ label .hamburger span:nth-child(2) {
+    width: 0;
+}
+
+#btn-menu:checked ~ label .hamburger span:nth-child(3) {
+    transform: rotate(-33deg);
+    left: 3px;
+}
+
+/*========================================================*/
 
 
   nav .logo{
@@ -193,20 +267,20 @@ nav ul ul ul li{
   }
 
 
- nav ul{
-    margin-right: 0px;
-    width: 100%;
-    left: -100%;
-    transition: 0.5s ease-in;   
+  nav ul{
+   width: 100% !important;
+   left: -100%;
+   margin-right: 0px;
+   transition: .3s ease-in;   
   } 
 
   .mobile-view + a, ul{
     position: absolute;
     visibility: hidden; 
     opacity: 0;
-    /* -webkit-transition: opacity 600ms, visibility 600ms;
-    transition: opacity 600ms, visibility 600ms; */
-    transition: 0.5s ease-in;  
+    -webkit-transition: opacity 600ms, visibility 600ms;
+    transition: opacity 600ms, visibility 600ms; 
+    transition: .3s ease-in;  
   }
 
   @keyframes fade {
@@ -219,6 +293,7 @@ nav ul ul ul li{
     }
 } 
 
+  [id^=btn-menu]:checked  ~ ul, 
   [id^=check]:checked  ~ ul {
     visibility: visible; 
     display: block;  
@@ -227,12 +302,18 @@ nav ul ul ul li{
     animation: fade 1s; 
   } 
 
+  [id^=check]:checked ~ label.mobile-view > .fa-chevron-down::before{
+     content: "\f077"; 
+  }
+  
+
 
   nav ul li, nav ul ul li{
     display: block;
     width: 100%;
     /* padding-left: 40px; */
     background: rgba(0, 0, 0, 0.5); 
+    max-height: 500px; 
 }
 
  .mobile-view{
@@ -249,13 +330,18 @@ nav ul ul ul li{
   }
 
 
+  nav ul li:hover .fa-chevron-down{
+    transform: initial !important;
+  } 
+  
+
   nav ul ul{
     border-top: 0px;
     float: none;
     position: static;
     display: none;  
     opacity: 1; 
-    margin-left: 90px;
+    margin-left: 80px; 
   }
 
     nav ul ul a{
@@ -266,11 +352,7 @@ nav ul ul ul li{
     /* background: rgba(255, 255, 255, 0.055);  */
   } 
 
-  nav ul ul ul a{
-    /* padding-left: 80px; */
-    line-height: 1rem;
-  } 
-
+  
   nav ul ul ul li{
     position: static;
   }
@@ -285,11 +367,5 @@ nav ul ul ul li{
   font-size: 18px;
   }
 
-
-  .smile{
-  visibility: hidden;
-  }
-
-   
 } 
  
