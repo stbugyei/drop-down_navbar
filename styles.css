@@ -30,11 +30,12 @@
 
 
 nav{
-    text-transform:uppercase;
+    text-transform: uppercase;
     width: 100%;
     height: 60px;
     padding-right: 50px; 
-    background: #2f94fb;;
+    background-image: linear-gradient(to right top, #50effe, #00b2d8, #0078aa, #004275, #04113d);
+    transition: .3s ease
 }
 
  nav:after{
@@ -71,32 +72,31 @@ nav .logo{
   list-style: none;
   position: relative;
   float: right;
-  /* margin-right: 60px; */
   transition: all .4s ease-in-out;
   
 }
 
 
 nav ul li{
-    background: #2f94fb;
     display: inline-block;
+    line-height: 60px; 
      /* margin: 0 5px;  */
+     transition: all .4s ease-in-out;
 }
 
 
-nav ul li a{
+ nav ul li a{
     text-decoration: none;
     color: #fff;
-    line-height: 60px;
+    line-height: 58px;
     font-size: 16px;
-    transition: .3s ease; 
     padding: 8px 15px;
-}
-
- nav ul li a:hover{
-  color:rgb(44, 248, 248); 
-  transition: .2s ease;
 } 
+
+nav ul li a:hover{
+  color:rgb(44, 248, 248); 
+}  
+
 
 
 /*sub menu properties*/
@@ -123,8 +123,15 @@ nav ul li:hover .fa-chevron-down{
   transform: rotate(180deg);
 }
 
+ nav ul li:hover{
+   background: #004275; 
+}  
 
 
+nav ul li li{
+  background: #004275; 
+ }
+ 
 
 nav ul ul li{
     width: 180px;
@@ -261,6 +268,11 @@ nav ul ul ul li{
 /*========================================================*/
 
 
+  nav{
+  padding-right: initial !important;
+  }
+
+
   nav .logo{
     padding-left: 20px;
     width: 100%;
@@ -268,7 +280,7 @@ nav ul ul ul li{
 
 
   nav ul{
-   width: 100% !important;
+   width: 100%;
    left: -100%;
    margin-right: 0px;
    transition: .3s ease-in;   
@@ -307,13 +319,12 @@ nav ul ul ul li{
   }
   
 
-
-  nav ul li, nav ul ul li{
+  nav ul li,
+  nav ul ul li{
     display: block;
-    width: 100%;
+    width: 100% !important;
     /* padding-left: 40px; */
     background: rgba(0, 0, 0, 0.5); 
-    max-height: 500px; 
 }
 
  .mobile-view{
@@ -334,6 +345,10 @@ nav ul ul ul li{
     transform: initial !important;
   } 
   
+ 
+  nav ul li:hover{
+   background: initial; 
+ }  
 
   nav ul ul{
     border-top: 0px;
